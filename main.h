@@ -1,7 +1,9 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-//#include <Windows.h>
+#include <Windows.h>
+// ‰½ŒÌ‚©lib‚ªƒŠƒ“ƒN‚Å‚«‚È‚¢‚©‚çŽè“®
+#pragma comment(lib,"winmm.lib")
 //#include "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3d9.h"
 #include <d3d9.h>
 //#include <c:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3d9.h>

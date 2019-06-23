@@ -6,9 +6,6 @@
 
 #include "main.h"
 #include "manager.h"
-//#include <stdio.h>
-#include <Windows.h>
-#pragma comment(lib,"winmm.lib")
 
 
 const char* CLASS_NAME = "DX11AppClass";
