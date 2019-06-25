@@ -2,6 +2,7 @@
 #define MAIN_H_
 
 #include <Windows.h>
+#include <assert.h> // ƒGƒ‰[‚Ì‹Ù‹}’â~
 // ‰½ŒÌ‚©lib‚ªƒŠƒ“ƒN‚Å‚«‚È‚¢‚©‚çè“®
 #pragma comment(lib,"winmm.lib")
 //#include "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3d9.h"

@@ -6,8 +6,6 @@
 
 #include "main.h"
 #include "manager.h"
-//#include "renderer.h"
-
 
 const char* CLASS_NAME = "DX11AppClass";
 const char* WINDOW_NAME = "Sword of Roar";
