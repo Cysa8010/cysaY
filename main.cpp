@@ -9,7 +9,7 @@
 
 
 const char* CLASS_NAME = "DX11AppClass";
-const char* WINDOW_NAME = "DX11";
+const char* WINDOW_NAME = "Sword of Roar";
 
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
