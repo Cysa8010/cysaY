@@ -6,6 +6,7 @@
 
 #include "main.h"
 #include "manager.h"
+//#include "renderer.h"
 
 
 const char* CLASS_NAME = "DX11AppClass";
@@ -151,3 +152,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
+HWND GetHWnd()
+{
+	return g_Window;
+}
