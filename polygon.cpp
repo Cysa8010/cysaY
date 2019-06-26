@@ -73,7 +73,6 @@ void CPolygon::Draw()
 		
 		Renderer::SetMatrix2D();
 		pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
-		//pDevice->SetFVF(D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE | D3DFVF_TEX1);
 		pDevice->SetFVF(VERTEX_3D_FVF);
 		pDevice->SetTexture(0,0);
 		pDevice->SetStreamSource(0, pVertexBuffer, 0, sizeof(VERTEX_3D));
