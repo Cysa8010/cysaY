@@ -1,6 +1,14 @@
 #include "renderer.h"
 #include "main.h"
 #include <d3d9.h>
+#include <d3dx9.h>
+#if defined(DEBUG) || defined(_DEBUG)
+#pragma comment( lib, "d3dx9d.lib" )
+#else
+#pragma comment( lib, "d3dx9.lib" )
+#endif
+
+
 
 #define SAFE_RELEASE(x)   { if(x) {(x)->Release(); (x) = NULL;} }
 
@@ -83,4 +91,23 @@ void Renderer::End()
 	//•`‰æI—¹
 	g_pDevice->EndScene();
 	g_pDevice->Present(NULL, NULL, NULL, NULL);
+}
+
+void Renderer::SetMatrix2D()
+{
+	D3DXMATRIX world;
+	D3DXMatrixIdentity(&world);
+	g_pDevice->SetTransform(D3DTS_WORLD, &world);
+
+	D3DXMATRIX view;
+	D3DXMatrixIdentity(&view);
+	/*D3DXMatrixLookAtLH(&view, &D3DXVECTOR3(0.0f, 0.0f, 0.0f),
+		&D3DXVECTOR3(0.0f, 0.0f, 0.0f), 
+		&D3DXVECTOR3(0.0f, 1.0f, 0.0f));*/
+
+	D3DXMATRIX projection;
+	D3DXMatrixIdentity(&projection);
+	D3DXMatrixOrthoLH(&projection, SCREEN_WIDTH, SCREEN_HEIGHT, 0.1f, 100.0f);
+
+	
 }

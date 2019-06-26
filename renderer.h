@@ -9,6 +9,8 @@ public:
 	static void Begin();
 	static void End();
 
+	static void SetMatrix2D();
+
 
 };
 
