@@ -1,6 +1,8 @@
 #ifndef MANAGER_H_
 #define MANAGER_H_
 
+class Scene;
+
 class Manager
 {
 public:
@@ -8,7 +10,7 @@ public:
 	static void Finalize();
 	static void Update();
 	static void Draw();
-	//static Scene* GetScene();
+	static Scene* GetScene();
 };
 
 #endif // !MANAGER_H_

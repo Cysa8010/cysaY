@@ -3,20 +3,8 @@
 // ˆË‘¶Œn
 #include "renderer.h"// Direct3D9
 #include "input.h"   // WindowsAPI
-
-#include "texture.h"
-#include "polygon.h"
-#include "Object.h"
-#include "player.h"
-#include "enemy.h"
-#include <list>
-
 #include "scene.h"
 
-//CPolygon* g_polygon;
-std::list<Object*> g_GameObjects;
-//Player* g_Player;
-//Enemy* g_Enemy;
 Scene* g_Scene;
 
 void Manager::Initialize()
@@ -50,4 +38,9 @@ void Manager::Draw()
 	g_Scene->Draw();
 
 	Renderer::End();
+}
+
+Scene * Manager::GetScene()
+{
+	return g_Scene;
 }

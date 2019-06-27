@@ -33,6 +33,7 @@ public:
 		{
 			Finalize();
 			delete this;
+			return true;
 		}
 		else
 			return false;

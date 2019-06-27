@@ -2,6 +2,9 @@
 #define RENDERER_H_
 
 #define VERTEX_3D_FVF (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE | D3DFVF_TEX1)
+
+class Texture;
+
 struct VERTEX_3D
 {
 	D3DXVECTOR3 position;
@@ -22,6 +25,7 @@ public:
 	
 
 	static LPDIRECT3DDEVICE9 GetDevice();
+	static void SetTexture(Texture* texture);
 
 
 };
