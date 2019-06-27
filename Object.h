@@ -4,6 +4,7 @@
 class Object
 {
 private:
+protected:
 	D3DXVECTOR3 m_Position;
 	D3DXVECTOR3 m_Rotation;
 	D3DXVECTOR3 m_Scaling;
@@ -18,8 +19,10 @@ public:
 	void SetRotation(D3DXVECTOR3 Rotation) { m_Rotation = Rotation; }
 	void SetScaling(D3DXVECTOR3 Scaling) { m_Scaling = Scaling; }
 
-	Object() :m_Destroy(false) {}
+	Object() :m_Destroy(false),	m_Position(D3DXVECTOR3(0.f,0.f,0.f)),
+		m_Rotation(D3DXVECTOR3(0.f, 0.f, 0.f)),	m_Scaling(D3DXVECTOR3(1.f, 1.f, 1.f)) {}
 	virtual ~Object() {}
+	virtual void Initialize(){}
 	virtual void Finalize(){}
 	virtual void Update(){}
 	virtual void Draw(){}

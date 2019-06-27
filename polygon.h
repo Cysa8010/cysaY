@@ -6,7 +6,7 @@ class CPolygon
 private:
 	LPDIRECT3DVERTEXBUFFER9 pVertexBuffer = NULL;
 	LPDIRECT3DINDEXBUFFER9 pIndexBuffer = NULL;
-	Texture* tex;
+	//Texture* tex;
 public:
 	void Initialize();
 	void Finalise();
