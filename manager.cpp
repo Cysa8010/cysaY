@@ -11,32 +11,27 @@
 #include "enemy.h"
 #include <list>
 
+#include "scene.h"
+
 //CPolygon* g_polygon;
 std::list<Object*> g_GameObjects;
 //Player* g_Player;
 //Enemy* g_Enemy;
+Scene* g_Scene;
 
 void Manager::Initialize()
 {
 	Renderer::Initialize();
 	Input::Initialize();
 	
-	Player* player = new Player();
-	player->Initialize();
-	g_GameObjects.push_back(player);
-	Enemy* enemy = new Enemy();
-	enemy->Initialize();
-	g_GameObjects.push_back(enemy);
+	g_Scene = new Scene();
+	g_Scene->Initialize();
 }
 
 void Manager::Finalize()
 {
-	for (Object* object : g_GameObjects)
-	{
-		object->Finalize();
-		delete object;
-	}
-	g_GameObjects.clear();
+	g_Scene->Finalize();
+	delete g_Scene;
 
 	Input::Finalize();
 	Renderer::Finalize();
@@ -45,20 +40,14 @@ void Manager::Finalize()
 void Manager::Update()
 {
 	Input::Update();
-	for (Object* object : g_GameObjects)
-	{
-		object->Update();
-	}
+	g_Scene->Update();
 }
 
 void Manager::Draw()
 {
 	Renderer::Begin();
 
-	for (Object* object : g_GameObjects)
-	{
-		object->Draw();
-	}
+	g_Scene->Draw();
 
 	Renderer::End();
 }
