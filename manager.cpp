@@ -8,23 +8,35 @@
 #include "polygon.h"
 #include "Object.h"
 #include "player.h"
+#include "enemy.h"
+#include <list>
 
 //CPolygon* g_polygon;
-Player* g_Player;
+std::list<Object*> g_GameObjects;
+//Player* g_Player;
+//Enemy* g_Enemy;
 
 void Manager::Initialize()
 {
 	Renderer::Initialize();
 	Input::Initialize();
 	
-	g_Player = new Player();
-	g_Player->Initialize();
+	Player* player = new Player();
+	player->Initialize();
+	g_GameObjects.push_back(player);
+	Enemy* enemy = new Enemy();
+	enemy->Initialize();
+	g_GameObjects.push_back(enemy);
 }
 
 void Manager::Finalize()
 {
-	g_Player->Finalize();
-	delete g_Player;
+	for (Object* object : g_GameObjects)
+	{
+		object->Finalize();
+		delete object;
+	}
+	g_GameObjects.clear();
 
 	Input::Finalize();
 	Renderer::Finalize();
@@ -33,14 +45,20 @@ void Manager::Finalize()
 void Manager::Update()
 {
 	Input::Update();
-	g_Player->Update();
+	for (Object* object : g_GameObjects)
+	{
+		object->Update();
+	}
 }
 
 void Manager::Draw()
 {
 	Renderer::Begin();
 
-	g_Player->Draw();
+	for (Object* object : g_GameObjects)
+	{
+		object->Draw();
+	}
 
 	Renderer::End();
 }
