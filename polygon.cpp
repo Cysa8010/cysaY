@@ -65,22 +65,19 @@ void CPolygon::Update()
 
 }
 
-void CPolygon::Draw()
+void CPolygon::Draw(const float x, const float y)
 {
 	LPDIRECT3DDEVICE9 pDevice = Renderer::GetDevice();
 	
+	Renderer::SetMatrix2D();
 	{// ワールド座標の設定
-		//D3DXMATRIX mtxWorld;
-		//D3DXMatrixIdentity(&mtxWorld);// 単位行列の作成
-		//mtxWorld = *mtx;
-
-		//pDevice->SetTransform(D3DTS_WORLD, &mtxWorld);
+		D3DXMATRIX mtxWorld;
+		D3DXMatrixIdentity(&mtxWorld);// 単位行列の作成
+		D3DXMatrixTranslation(&mtxWorld, x-(SCREEN_WIDTH/2.f), (y*-1.f)+(SCREEN_HEIGHT/2.f), 0.f);
+		pDevice->SetTransform(D3DTS_WORLD, &mtxWorld);
 	}
 
-	
 	{
-		
-		Renderer::SetMatrix2D();
 		pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 		pDevice->SetFVF(VERTEX_3D_FVF);
 		pDevice->SetTexture(0,tex->GetTexture());
