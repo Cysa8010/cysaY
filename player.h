@@ -4,13 +4,15 @@
 class Player:public Object
 {
 private:
-
+	Texture* tex;
+	CPolygon* m_Polygon;
 public:
 	Player();
-	~Player();
-	void Finalize();
-	void Update();
-	void Draw();
+	~Player()override;
+	void Initialize()override;
+	void Finalize()override;
+	void Update()override;
+	void Draw()override;
 };
 
 #endif // !PLAYER_H_
