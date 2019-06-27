@@ -42,17 +42,12 @@ void CPolygon::Initialize()
 	pV[3].normal = D3DXVECTOR3(0.0, 0.0f, 1.0f);  //奥
 
 	pVertexBuffer->Unlock();
-	tex = new Texture();
-	tex->Load("asset/cursol2.png");
+	
 }
 
 void CPolygon::Finalise()
 {
-	if (tex)
-	{
-		tex->Release();
-		delete tex;
-	}
+	
 	// 頂点バッファの解放
 	if (pVertexBuffer) {
 		pVertexBuffer->Release();
@@ -80,7 +75,7 @@ void CPolygon::Draw(const float x, const float y)
 	{
 		pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 		pDevice->SetFVF(VERTEX_3D_FVF);
-		pDevice->SetTexture(0,tex->GetTexture());
+		//pDevice->SetTexture(0, 0);
 		pDevice->SetStreamSource(0, pVertexBuffer, 0, sizeof(VERTEX_3D));
 		
 		// プリミティブの描画
