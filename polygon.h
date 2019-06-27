@@ -11,7 +11,7 @@ public:
 	void Initialize();
 	void Finalise();
 	void Update();
-	void Draw();
+	void Draw(const float x,const float y);
 };
 
 #endif // !POLYGON_H_

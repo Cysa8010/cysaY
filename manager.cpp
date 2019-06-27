@@ -35,7 +35,7 @@ void Manager::Draw()
 {
 	Renderer::Begin();
 
-	g_polygon->Draw();
+	g_polygon->Draw(0.f,0.f);
 
 	Renderer::End();
 }
