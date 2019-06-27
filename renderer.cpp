@@ -1,6 +1,6 @@
 #include "main.h"
 #include "renderer.h"
-
+#include "texture.h"
 
 
 
@@ -118,4 +118,9 @@ void Renderer::SetMatrix2D()
 LPDIRECT3DDEVICE9 Renderer::GetDevice()
 {
 	return g_pDevice;
+}
+
+void Renderer::SetTexture(Texture * texture)
+{
+	g_pDevice->SetTexture(0, texture->GetTexture());
 }

@@ -5,6 +5,8 @@
 #include <list>
 #include <vector>
 #include <typeinfo>
+#include "texture.h"
+#include "polygon.h"
 #include "Object.h"
 #include "player.h"
 #include "enemy.h"
