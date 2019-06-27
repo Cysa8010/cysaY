@@ -1,6 +1,8 @@
 #include "main.h"
 #include "renderer.h"
+#include "texture.h"
 #include "polygon.h"
+
 
 void CPolygon::Initialize()
 {
@@ -17,10 +19,10 @@ void CPolygon::Initialize()
 	pVertexBuffer->Lock(0, 0, (void**)&pV, 0);
 
 	// 頂点座標
-	pV[0].position = D3DXVECTOR3(-502.0f, +100.0f, +0.0f);
-	pV[1].position = D3DXVECTOR3(+502.0f, +100.0f, +0.0f);
-	pV[2].position = D3DXVECTOR3(-502.0f, -100.0f, +0.0f);
-	pV[3].position = D3DXVECTOR3(+502.0f, -100.0f, +0.0f);
+	pV[0].position = D3DXVECTOR3(-32.0f, +32.0f, +0.0f);
+	pV[1].position = D3DXVECTOR3(+32.0f, +32.0f, +0.0f);
+	pV[2].position = D3DXVECTOR3(-32.0f, -32.0f, +0.0f);
+	pV[3].position = D3DXVECTOR3(+32.0f, -32.0f, +0.0f);
 
 	// UV座標
 	pV[0].texcoord = D3DXVECTOR2(0.f, 0.f);
@@ -30,7 +32,7 @@ void CPolygon::Initialize()
 
 	// 色
 	for (int i = 0; i < 4; i++) {
-		pV[i].diffuse = 0xffff0000;//赤色
+		pV[i].diffuse = 0xffffffff;//赤色
 	}
 
 	// 法線
@@ -40,10 +42,17 @@ void CPolygon::Initialize()
 	pV[3].normal = D3DXVECTOR3(0.0, 0.0f, 1.0f);  //奥
 
 	pVertexBuffer->Unlock();
+	tex = new Texture();
+	tex->Load("asset/cursol2.png");
 }
 
 void CPolygon::Finalise()
 {
+	if (tex)
+	{
+		tex->Release();
+		delete tex;
+	}
 	// 頂点バッファの解放
 	if (pVertexBuffer) {
 		pVertexBuffer->Release();
@@ -74,7 +83,7 @@ void CPolygon::Draw()
 		Renderer::SetMatrix2D();
 		pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 		pDevice->SetFVF(VERTEX_3D_FVF);
-		pDevice->SetTexture(0,0);
+		pDevice->SetTexture(0,tex->GetTexture());
 		pDevice->SetStreamSource(0, pVertexBuffer, 0, sizeof(VERTEX_3D));
 		
 		// プリミティブの描画

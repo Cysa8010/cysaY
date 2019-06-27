@@ -4,7 +4,8 @@
 
 void Texture::Load(const char * fileName)
 {
-	if (FAILED(D3DXCreateTextureFromFile(Renderer::GetDevice() , fileName, &image))) {
+	if (FAILED(D3DXCreateTextureFromFile(Renderer::GetDevice() , fileName, &image))) 
+	{
 		return;
 	}
 }

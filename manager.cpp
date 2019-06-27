@@ -4,6 +4,7 @@
 #include "renderer.h"// Direct3D9
 #include "input.h"   // WindowsAPI
 
+#include "texture.h"
 #include "polygon.h"
 
 CPolygon* g_polygon;
