@@ -1,6 +1,8 @@
-#include "renderer.h"
 #include "main.h"
-#include <d3d9.h>
+#include "renderer.h"
+
+
+
 
 #define SAFE_RELEASE(x)   { if(x) {(x)->Release(); (x) = NULL;} }
 
@@ -83,4 +85,37 @@ void Renderer::End()
 	//•`‰æI—¹
 	g_pDevice->EndScene();
 	g_pDevice->Present(NULL, NULL, NULL, NULL);
+}
+
+void Renderer::SetMatrix2D()
+{
+	D3DXMATRIX world;
+	D3DXMatrixIdentity(&world);
+	g_pDevice->SetTransform(D3DTS_WORLD, &world);
+
+	D3DXMATRIX view;
+	D3DXMatrixIdentity(&view);
+	D3DXMatrixLookAtLH(&view, &D3DXVECTOR3(0.0f, 0.0f, -0.20f),
+		&D3DXVECTOR3(0.0f, 0.0f, 0.0f), 
+		&D3DXVECTOR3(0.0f, 1.0f, 0.0f));
+	g_pDevice->SetTransform(D3DTS_VIEW, &view);
+
+	D3DXMATRIX projection;
+	D3DXMatrixIdentity(&projection);
+	//‹ß•½–Êc•=near *tan( Ž‹–ìŠp           / 2  )*2
+	float nearH = 0.1f*tanf(D3DXToRadian(60) / 2.f)*2.f;
+	//‹ß•½–Ê‰¡•=‹ß•½–Êc•*ƒAƒXƒyƒNƒg”ä
+	float nearW = nearH * (float)SCREEN_WIDTH / SCREEN_HEIGHT;
+	//D3DXMatrixOrthoLH(&projection, nearW, nearH, 0.1f, 200.0f);
+	//D3DXMatrixPerspectiveLH(&projection, nearW, nearH, 0.1f, 200.0f);
+	D3DXMatrixOrthoLH(&projection, (float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.1f, 200.0f);
+	//D3DXMatrixPerspectiveLH(&projection, (float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.1f, 200.0f);
+	//D3DXMatrixPerspectiveFovLH(&projection, D3DXToRadian(60), (float)SCREEN_WIDTH / SCREEN_HEIGHT, 0.1f, 100.f);
+	g_pDevice->SetTransform(D3DTS_PROJECTION, &projection);
+	
+}
+
+LPDIRECT3DDEVICE9 Renderer::GetDevice()
+{
+	return g_pDevice;
 }
