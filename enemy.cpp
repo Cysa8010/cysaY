@@ -19,7 +19,7 @@ void Enemy::Initialize()
 	m_Polygon->Initialize();
 
 	m_Tex = new Texture();
-	m_Tex->Load("asset/cursol2.png");
+	m_Tex->Load("asset/ene.tga");
 
 }
 

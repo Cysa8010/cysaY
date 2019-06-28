@@ -8,6 +8,7 @@
 #include "scene.h"
 // 仮->後で削除
 #include "enemy.h"
+#include "explosion.h"
 
 Bullet::Bullet()
 {
@@ -23,7 +24,7 @@ void Bullet::Initialize()
 	m_Polygon->Initialize();
 
 	m_Tex = new Texture();
-	m_Tex->Load("asset/cursol2.png");
+	m_Tex->Load("asset/bul.tga");
 }
 
 void Bullet::Finalize()
@@ -62,6 +63,9 @@ void Bullet::Update()
 		{
 			Manager::GetScene()->DestroyGameObject(enemy);
 			Manager::GetScene()->DestroyGameObject(this);
+			Explosion* exp = Manager::GetScene()->AddGameObject<Explosion>(3);
+			// expに今死んだエネ三の座標をぶち込む
+			exp->SetPosition(enemy->GetPosition());
 			return;
 		}
 	}
